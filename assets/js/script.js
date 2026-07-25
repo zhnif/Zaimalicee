@@ -1027,3 +1027,146 @@ scale(1.05)
     card.style.transform = "rotateX(0) rotateY(0) scale(1)";
   });
 });
+
+/* ==========================================================
+   FINAL SURPRISE
+   PART 10.3
+========================================================== */
+
+const finalBtn = document.getElementById("finalBtn");
+const finalModal = document.getElementById("finalModal");
+const closeFinal = document.getElementById("closeFinal");
+const starsContainer = document.querySelector(".ending-stars");
+
+let finalOpened = false;
+
+/*==========================
+OPEN MODAL
+==========================*/
+
+finalBtn.addEventListener("click", () => {
+  if (finalOpened) return;
+
+  finalOpened = true;
+
+  finalModal.classList.add("show");
+
+  document.body.style.overflow = "hidden";
+
+  createHearts(80);
+
+  createConfetti(120);
+});
+
+/*==========================
+CLOSE MODAL
+==========================*/
+
+function closeEnding() {
+  finalModal.classList.remove("show");
+
+  document.body.style.overflow = "";
+}
+
+closeFinal.addEventListener("click", closeEnding);
+
+/*==========================
+ESC
+==========================*/
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    closeEnding();
+  }
+});
+
+/*==========================
+STARS
+==========================*/
+
+for (let i = 0; i < 120; i++) {
+  const star = document.createElement("span");
+
+  star.className = "star";
+
+  star.style.left = Math.random() * 100 + "%";
+
+  star.style.top = Math.random() * 100 + "%";
+
+  star.style.animationDelay = Math.random() * 4 + "s";
+
+  star.style.animationDuration = 2 + Math.random() * 4 + "s";
+
+  starsContainer.appendChild(star);
+}
+
+/*==========================
+HEARTS
+==========================*/
+
+function createHearts(total) {
+  for (let i = 0; i < total; i++) {
+    setTimeout(() => {
+      const heart = document.createElement("div");
+
+      heart.className = "floating-heart";
+
+      heart.innerHTML = "❤️";
+
+      heart.style.left = Math.random() * 100 + "vw";
+
+      heart.style.bottom = "-30px";
+
+      heart.style.fontSize = 16 + Math.random() * 28 + "px";
+
+      heart.style.animationDuration = 4 + Math.random() * 3 + "s";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 7000);
+    }, i * 45);
+  }
+}
+
+/*==========================
+CONFETTI
+==========================*/
+
+const colors = ["#ff2d55", "#ff5c8a", "#ffffff", "#ffd166", "#ff8fab"];
+
+function createConfetti(total) {
+  for (let i = 0; i < total; i++) {
+    setTimeout(() => {
+      const confetti = document.createElement("span");
+
+      confetti.className = "confetti";
+
+      confetti.style.left = Math.random() * 100 + "vw";
+
+      confetti.style.background =
+        colors[Math.floor(Math.random() * colors.length)];
+
+      confetti.style.animationDuration = 3 + Math.random() * 3 + "s";
+
+      confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+
+      document.body.appendChild(confetti);
+
+      setTimeout(() => {
+        confetti.remove();
+      }, 7000);
+    }, i * 20);
+  }
+}
+
+/*==========================
+CLICK OUTSIDE
+==========================*/
+
+finalModal.addEventListener("click", (e) => {
+  if (e.target === finalModal) {
+    closeEnding();
+  }
+});

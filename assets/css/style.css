@@ -41,19 +41,19 @@ body {
 
 :root {
 
-    --primary: #ff6fa5;
+    --primary: #f84587;
 
-    --secondary: #ff9ec7;
+    --secondary: #bd6e8f;
 
     --accent: #ffd166;
 
-    --white: #ffffff;
+    --white: #e9dbdb;
 
     --glass: rgba(255, 255, 255, .12);
 
     --glass-border: rgba(255, 255, 255, .18);
 
-    --text: #ffffff;
+    --text: #fd4747;
 
     --shadow:
         0 10px 35px rgba(0, 0, 0, .25);
@@ -2794,121 +2794,307 @@ a {
     LOVE LETTER
 ==================================================*/
 
-.love-letter {
+/*==========================
+SECTION
+==========================*/
 
-    padding: 120px 20px;
+.love-letter-section {
+
+    position: relative;
+    overflow: hidden;
+
+    padding: 140px 20px;
 
 }
 
-.envelope-wrapper {
+/*==========================
+BACKGROUND GLOW
+==========================*/
+
+.love-bg-circle {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(80px);
+
+    z-index: 0;
+
+}
+
+.circle-1 {
+
+    width: 320px;
+    height: 320px;
+
+    background: rgba(255, 40, 90, .18);
+
+    top: -80px;
+    left: -80px;
+
+}
+
+.circle-2 {
+
+    width: 380px;
+    height: 380px;
+
+    background: rgba(120, 0, 30, .28);
+
+    bottom: -120px;
+    right: -100px;
+
+}
+
+/*==========================
+TITLE
+==========================*/
+
+.love-title {
+
+    position: relative;
+
+    z-index: 2;
+
+    text-align: center;
+
+    margin-bottom: 60px;
+
+}
+
+.love-badge {
+
+    display: inline-block;
+
+    padding: 10px 22px;
+
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, .08);
+
+    border: 1px solid rgba(255, 255, 255, .12);
+
+    backdrop-filter: blur(15px);
+
+    color: #ffb2c4;
+
+    margin-bottom: 18px;
+
+}
+
+.love-title h2 {
+
+    font-size: 3rem;
+
+    margin-bottom: 15px;
+
+    color: white;
+
+}
+
+.love-title p {
+
+    color: #d5d5d5;
+
+    font-size: 1rem;
+
+}
+
+/*==========================
+CARD
+==========================*/
+
+.love-card {
+
+    position: relative;
+
+    width: min(430px, 95%);
+
+    margin: auto;
+
+    border-radius: 28px;
+
+    overflow: hidden;
+
+    background:
+
+        rgba(255, 255, 255, .08);
+
+    border:
+
+        1px solid rgba(255, 255, 255, .12);
+
+    backdrop-filter: blur(22px);
+
+    box-shadow:
+
+        0 20px 60px rgba(0, 0, 0, .35);
+
+    transition:
+
+        .55s cubic-bezier(.22, 1, .36, 1);
+
+    z-index: 5;
+
+}
+
+/*==========================
+HOVER
+==========================*/
+
+.love-card:hover {
+
+    transform:
+
+        translateY(-8px);
+
+    box-shadow:
+
+        0 30px 80px rgba(255, 0, 70, .25);
+
+}
+
+/*==========================
+SHINE
+==========================*/
+
+.love-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: -120%;
+
+    left: -45%;
+
+    width: 40%;
+
+    height: 300%;
+
+    background:
+
+        linear-gradient(90deg,
+
+            transparent,
+
+            rgba(255, 255, 255, .18),
+
+            transparent);
+
+    transform: rotate(25deg);
+
+    transition: 1s;
+
+}
+
+.love-card:hover::before {
+
+    left: 150%;
+
+}
+
+/*==========================
+COVER
+==========================*/
+
+.love-card-cover {
+
+    position: relative;
 
     display: flex;
 
     flex-direction: column;
 
+    justify-content: center;
+
     align-items: center;
 
-    gap: 10px;
+    text-align: center;
+
+    padding: 60px 30px;
+
+    transition: .5s;
 
 }
 
-.envelope {
+/*==========================
+HEART
+==========================*/
 
-    position: relative;
+.love-icon {
 
-    width: 340px;
+    width: 110px;
+    height: 110px;
 
-    height: 240px;
+    border-radius: 50%;
 
-    perspective: 1200px;
+    display: flex;
 
-}
+    justify-content: center;
 
-.envelope-front {
+    align-items: center;
 
-    position: absolute;
+    font-size: 3rem;
 
-    inset: 0;
+    margin-bottom: 25px;
 
-    background: linear-gradient(135deg, #ff6fa5, #ff9ec7);
+    background:
 
-    clip-path: polygon(0 0, 100% 0, 50% 55%);
+        linear-gradient(145deg,
 
-    transform-origin: top;
+            #ff5d83,
 
-    transition: 1s;
-
-    z-index: 3;
-
-}
-
-.letter-paper {
-
-    position: absolute;
-
-    left: 20px;
-
-    right: 20px;
-
-    bottom: 20px;
-
-    height: 180px;
-
-    background: white;
-
-    color: #444;
-
-    border-radius: 14px;
-
-    padding: 22px;
-
-    overflow: auto;
-
-    transform: translateY(70px);
-
-    transition: 1s;
+            #d0003b);
 
     box-shadow:
 
-        0 20px 45px rgba(0, 0, 0, .25);
+        0 15px 40px rgba(255, 0, 70, .35);
+
+    animation:
+
+        heartFloat 4s ease-in-out infinite;
 
 }
 
-.letter-paper h3 {
+@keyframes heartFloat {
 
-    color: #ff4d88;
+    0% {
 
-    margin-bottom: 16px;
+        transform: translateY(0);
 
-}
+    }
 
-.letter-paper p {
+    50% {
 
-    line-height: 1.8;
+        transform: translateY(-10px);
 
-    margin-bottom: 14px;
+    }
 
-}
+    100% {
 
-.signature {
+        transform: translateY(0);
 
-    text-align: right;
-
-    font-family: "Pacifico", cursive;
-
-    color: #ff4d88;
+    }
 
 }
 
-.envelope.open .envelope-front {
+.love-card-cover h3 {
 
-    transform: rotateX(180deg);
+    color: white;
+
+    font-size: 2rem;
+
+    margin-bottom: 15px;
 
 }
 
-.envelope.open .letter-paper {
+.love-card-cover p {
 
-    transform: translateY(-40px);
+    color: #d6d6d6;
+
+    margin-bottom: 30px;
 
 }
 
@@ -4399,5 +4585,505 @@ a {
 
     }
 
+
+}
+
+/* ==========================================================
+   FINAL SURPRISE
+   PART 10.2A
+==========================================================*/
+
+.ending-section {
+
+    position: relative;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 120px 20px;
+
+    overflow: hidden;
+
+}
+
+/*==========================
+BACKGROUND
+==========================*/
+
+.ending-section::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(circle at top, #ff3b6d22, transparent 45%),
+        radial-gradient(circle at bottom, #5d001822, transparent 50%);
+
+}
+
+.ending-stars {
+
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+
+}
+
+/*==========================
+CONTENT
+==========================*/
+
+.ending-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: min(700px, 95%);
+
+    text-align: center;
+
+}
+
+.ending-badge {
+
+    display: inline-block;
+
+    padding: 10px 24px;
+
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, .08);
+
+    border: 1px solid rgba(255, 255, 255, .1);
+
+    color: #ff9cb6;
+
+    backdrop-filter: blur(15px);
+
+    margin-bottom: 20px;
+
+}
+
+.ending-content h2 {
+
+    color: white;
+
+    font-size: 3rem;
+
+    margin-bottom: 20px;
+
+}
+
+.ending-content p {
+
+    color: #ddd;
+
+    line-height: 1.8;
+
+    margin-bottom: 40px;
+
+}
+
+/*==========================
+BUTTON
+==========================*/
+
+#finalBtn {
+
+    border: none;
+
+    cursor: pointer;
+
+    padding: 18px 42px;
+
+    border-radius: 999px;
+
+    font-size: 1rem;
+
+    color: white;
+
+    background: linear-gradient(135deg, #ff3b6d, #b60039);
+
+    box-shadow:
+
+        0 15px 40px rgba(255, 0, 80, .35);
+
+    transition: .35s;
+
+}
+
+#finalBtn:hover {
+
+    transform:
+
+        translateY(-5px) scale(1.05);
+
+}
+
+/*==========================
+MODAL
+==========================*/
+
+.final-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 20px;
+
+    background: rgba(0, 0, 0, .82);
+
+    backdrop-filter: blur(15px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition: .45s;
+
+    z-index: 99999;
+
+}
+
+.final-modal.show {
+
+    opacity: 1;
+
+    visibility: visible;
+
+}
+
+/*==========================
+CARD
+==========================*/
+
+.final-card {
+
+    width: min(650px, 100%);
+
+    max-width: 650px;
+
+    margin: 0 auto;
+
+    padding: 45px;
+
+    border-radius: 30px;
+
+    text-align: center;
+
+    background: rgba(255, 255, 255, .08);
+
+    border: 1px solid rgba(255, 255, 255, .1);
+
+    backdrop-filter: blur(25px);
+
+    transform: scale(.85);
+
+    transition: .45s;
+
+}
+
+.final-modal.show .final-card {
+
+    transform: scale(1);
+
+}
+
+/* ==========================================================
+   FINAL SURPRISE
+   PART 10.2B
+==========================================================*/
+
+/*==========================
+HEART
+==========================*/
+
+.final-heart {
+
+    width: 130px;
+
+    height: 130px;
+
+    margin: auto;
+
+    margin-bottom: 25px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 4rem;
+
+    background: linear-gradient(145deg,
+            #ff4f7b,
+            #d60046);
+
+    box-shadow:
+        0 0 40px rgba(255, 0, 80, .35),
+        0 15px 50px rgba(255, 0, 80, .25);
+
+    animation: heartBeat 2s infinite;
+
+}
+
+@keyframes heartBeat {
+
+    0% {
+
+        transform: scale(1);
+
+    }
+
+    15% {
+
+        transform: scale(1.12);
+
+    }
+
+    30% {
+
+        transform: scale(.96);
+
+    }
+
+    45% {
+
+        transform: scale(1.08);
+
+    }
+
+    100% {
+
+        transform: scale(1);
+
+    }
+
+}
+
+/*==========================
+CARD TEXT
+==========================*/
+
+.final-card h2 {
+
+    color: white;
+
+    font-size: 2.7rem;
+
+    margin-bottom: 20px;
+
+}
+
+.final-card p {
+
+    color: #e2e2e2;
+
+    line-height: 1.9;
+
+    margin-bottom: 18px;
+
+}
+
+.final-card h3 {
+
+    color: #ff90ae;
+
+    font-size: 2rem;
+
+    margin-top: 35px;
+
+    margin-bottom: 30px;
+
+}
+
+/*==========================
+BUTTON
+==========================*/
+
+#closeFinal {
+
+    border: none;
+
+    cursor: pointer;
+
+    padding: 16px 40px;
+
+    border-radius: 999px;
+
+    color: white;
+
+    font-size: 1rem;
+
+    font-weight: 600;
+
+    background: linear-gradient(135deg,
+            #ff3b6d,
+            #d60046);
+
+    transition: .35s;
+
+    box-shadow:
+        0 15px 40px rgba(255, 0, 80, .3);
+
+}
+
+#closeFinal:hover {
+
+    transform:
+        translateY(-4px) scale(1.05);
+
+}
+
+/*==========================
+FLOATING HEART
+==========================*/
+
+.floating-heart {
+
+    position: fixed;
+
+    pointer-events: none;
+
+    user-select: none;
+
+    z-index: 100000;
+
+    animation: flyHeart 5s linear forwards;
+
+}
+
+@keyframes flyHeart {
+
+    0% {
+
+        opacity: 1;
+
+        transform:
+            translateY(0) scale(.6) rotate(0);
+
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translateY(-450px) scale(1.6) rotate(360deg);
+
+    }
+
+}
+
+/*==========================
+CONFETTI
+==========================*/
+
+.confetti {
+
+    position: fixed;
+
+    width: 10px;
+
+    height: 18px;
+
+    border-radius: 4px;
+
+    pointer-events: none;
+
+    z-index: 100000;
+
+    animation: confettiFall 4s linear forwards;
+
+}
+
+@keyframes confettiFall {
+
+    0% {
+
+        opacity: 1;
+
+        transform:
+            translateY(-20px) rotate(0);
+
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translateY(110vh) rotate(720deg);
+
+    }
+
+}
+
+/*==========================
+STARS
+==========================*/
+
+.star {
+
+    position: absolute;
+
+    width: 3px;
+
+    height: 3px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    animation: twinkle 3s infinite;
+
+}
+
+@keyframes twinkle {
+
+    0% {
+
+        opacity: .2;
+
+        transform: scale(.8);
+
+    }
+
+    50% {
+
+        opacity: 1;
+
+        transform: scale(1.5);
+
+    }
+
+    100% {
+
+        opacity: .2;
+
+        transform: scale(.8);
+
+    }
 
 }
